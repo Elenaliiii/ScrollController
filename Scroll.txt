@@ -1,51 +1,5 @@
  NotificationListener(
-                child: ListView.builder(
-                  controller: _scrollController,
-                  itemCount: messages.length,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.only(top: 10,bottom: 80),
-                  itemBuilder: (context, index){
-
-                    return Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
-                          child: Align(
-                            alignment:messageIndexType(index) ? Alignment.topLeft : Alignment.topRight ,
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color:  (messageIndexType(index)? Theme.of(context).colorScheme.secondary
-                                      :Theme.of(context).colorScheme.surface),
-                                ),
-                                padding: messages[index].messagesType == "3" ? EdgeInsets.all(5) : EdgeInsets.all(15)  ,
-                                child: TypeOfMessage(
-                                    type: messages[index].messagesType,
-                                    index: index,
-                                    textMessage: messages[index].messageContent,
-                                    senderMessage: messages[index].messageSender
-                                )
-
-
-                            ),
-                          ),
-                        ),
-                        Padding(padding: EdgeInsets.only(right: 22, left: 15),
-                          child:  Row(
-                            mainAxisAlignment:  messageIndexType(index)?
-                            MainAxisAlignment.start :
-                            MainAxisAlignment.end ,
-                            children: [
-                              messageIndexType(index)? SizedBox() : Text("خوانده شد"  , style: Theme.of(context).textTheme.bodySmall,),
-                              SizedBox(width: 10,),
-                              Text("12:24" , style: Theme.of(context).textTheme.displaySmall, ),
-                            ],),)
-
-
-                      ],
-                    );
-                  },
-                ),
+                child: myChild
                 onNotification: (t) {
                   if (t is ScrollEndNotification) {
                     print(_scrollController.position.pixels);
